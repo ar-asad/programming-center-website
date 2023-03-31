@@ -18,13 +18,12 @@ const Home = () => {
     }
 
     const handleBookMarkBlogs = (blog) => {
-        console.log(blog)
         const exist = books.find(book => book.id === blog.id)
         if (!exist) {
             setBooks([...books, blog]);
         }
         else {
-            toast.success('Success Notification !', {
+            toast.success('You Have Already Bookmarked This Blog !', {
                 position: toast.POSITION.TOP_CENTER
             });
             setBooks([...books, blog])
@@ -32,8 +31,8 @@ const Home = () => {
     }
 
     return (
-        <div className='grid lg:grid grid-cols-3 gap-4'>
-            <div className='col-span-2'>
+        <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-4'>
+            <div className='lg:col-span-2'>
                 {
                     blogs.map(blog => <Blogs key={blog.id} blog={blog} handleBookMarkBlogs={handleBookMarkBlogs} handleSpentTime={handleSpentTime}></Blogs>)
                 }
@@ -41,7 +40,10 @@ const Home = () => {
             <div className='p-4'>
                 <h4 className='text-blue-500 text-lg font-bold p-4 mb-4 text-center bg-blue-50'>Spent time on read : {spentTimeTotal.reduce((acc, value) => acc + value)} min</h4>
                 <div className='bg-gray-200 p-4'>
-                    <h4 className='text-lg font-bold'>Bookmarked Blogs : {books.length}</h4>
+                    <h4 className='text-lg font-bold mb-4'>Bookmarked Blogs : {books.length}</h4>
+                    {
+                        books.map(book => <p key={book.id} className='p-4 m-2 rounded text-gray-900 font-semibold bg-slate-50'>{book.job_name}</p>)
+                    }
                 </div>
             </div>
         </div>
