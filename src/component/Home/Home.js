@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Blogs from './Blogs';
 
 const Home = () => {
@@ -23,7 +24,9 @@ const Home = () => {
             setBooks([...books, blog]);
         }
         else {
-            alert('already added')
+            toast.success('Success Notification !', {
+                position: toast.POSITION.TOP_CENTER
+            });
             setBooks([...books, blog])
         }
     }
