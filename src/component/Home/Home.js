@@ -3,7 +3,8 @@ import Blogs from './Blogs';
 
 const Home = () => {
     const [blogs, setBlogs] = useState([]);
-    const [spentTimeTotal, setSpentTimeTotal] = useState([0])
+    const [spentTimeTotal, setSpentTimeTotal] = useState([0]);
+    const [books, setBooks] = useState([])
 
     useEffect(() => {
         fetch('data.json')
@@ -13,6 +14,10 @@ const Home = () => {
 
     const handleSpentTime = (time) => {
         setSpentTimeTotal([...spentTimeTotal, time])
+    }
+
+    const handleBookMarkBlogs = () => {
+
     }
 
     return (
@@ -25,7 +30,7 @@ const Home = () => {
             <div className='p-4'>
                 <h4 className='text-blue-500 text-lg font-bold p-4 text-center bg-blue-50'>Spent time on read : {spentTimeTotal.reduce((acc, value) => acc + value)} min</h4>
                 <div>
-
+                    <h4>Bookmarked Blogs : </h4>
                 </div>
             </div>
         </div>
