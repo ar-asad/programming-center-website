@@ -1,7 +1,7 @@
 import React from 'react';
 import { BookmarkIcon } from '@heroicons/react/24/solid'
 
-const Blogs = ({ blog }) => {
+const Blogs = ({ blog, handleSpentTime }) => {
     const { person_name, person_img, slot, time, job_name, cover_img } = blog;
     return (
         <div className='p-4'>
@@ -20,7 +20,7 @@ const Blogs = ({ blog }) => {
                 </div>
             </div>
             <h1 className='text-3xl font-bold mb-3'>{job_name}</h1>
-            <button className='text-blue-500 text-lg font-semibold underline underline-offset-4 mb-4'>Mark as read</button>
+            <button onClick={() => handleSpentTime(time)} className='text-blue-500 text-lg font-semibold underline underline-offset-4 mb-4'>Mark as read</button>
             <hr />
         </div>
 
